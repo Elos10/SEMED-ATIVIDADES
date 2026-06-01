@@ -1,0 +1,12 @@
+{
+  "name": "atividades-semed",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema SEMED para inscricoes, oficinas, frequencia e relatorios com Supabase.",
+  "engines": {
+    "node": "20"
+  },
+  "scripts": {
+    "check": "node --check supabase-init.js && node --check app.js && node scripts/check-supabase-config.mjs"
+  }
+}
