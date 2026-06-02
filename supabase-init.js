@@ -7,7 +7,7 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL.includes('PREENCHA')) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const DB_ID = 'db';
-const ADMIN = { id: 1, name: 'ADMINISTRADOR SEMED', email: 'admin@semed.local', password: 'adm123', role: 'Administrador', unit_id: 1, teacher_id: null, status: 'Ativo' };
+const ADMIN = { id: 1, name: 'ADMINISTRADOR SEMED', email: 'admin@semed.local', password: 'adm123', role: 'Administrador', unit_id: 1, teacher_id: null, status: 'Ativo', permissions: ['INSCRICOES:Visualizar','INSCRICOES:Cadastrar','INSCRICOES:Editar','INSCRICOES:Excluir','INSCRICOES:Imprimir','GESTAO:Visualizar','GESTAO:Cadastrar','GESTAO:Editar','GESTAO:Excluir','FREQUENCIA:Visualizar','FREQUENCIA:Salvar','FREQUENCIA:Editar','FREQUENCIA:Imprimir','RELATORIOS:Visualizar','RELATORIOS:Exportar','ACESSO:Visualizar','ACESSO:Cadastrar','ACESSO:Editar','ACESSO:Excluir'] };
 
 function seed() {
   const activities = ['FUTEBOL', 'RECREACAO/PSICOMOTRICIDADE', 'GINASTICA ORIENTADA/FUNCIONAL', 'REFORCO ESCOLAR', 'JUDO', 'BALLET', 'ARTES', 'FUTSAL', 'FUTSAL FEMININO', 'JIU-JITSU', 'VOLEI'];
@@ -181,7 +181,7 @@ async function request(method, path, data = undefined) {
     const activities = db.activities.map((a) => {
       const classIds = db.classes.filter((c) => Number(c.activity_id) === Number(a.id)).map((c) => Number(c.id));
       const activityRegs = regs.filter((r) => (r.class_ids || [r.class_id]).map(Number).some((id) => classIds.includes(id)));
-      return { atividade: a.name, matriculas_ativas: activityRegs.filter((r) => r.status === 'Ativo').length, vagas_abertas: db.classes.filter((c) => classIds.includes(Number(c.id))).reduce((s, c) => s + classAvailability(db, c.id).available, 0) };
+      return { activity_id: a.id, atividade: a.name, matriculas_ativas: activityRegs.filter((r) => r.status === 'Ativo').length, vagas_abertas: db.classes.filter((c) => classIds.includes(Number(c.id))).reduce((s, c) => s + classAvailability(db, c.id).available, 0) };
     }).filter((a) => a.matriculas_ativas || a.vagas_abertas).slice(0, 8);
     const avg = db.attendance.length ? Math.round((db.attendance.filter((a) => a.present).length / db.attendance.length) * 1000) / 10 : 0;
     return { totals: { total_inscritos: regs.length, ativos: regs.filter((r) => r.status === 'Ativo').length, espera: regs.filter((r) => r.status === 'Lista de espera').length }, activities, attendance: { frequencia_media: avg } };
