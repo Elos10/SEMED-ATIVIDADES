@@ -154,6 +154,13 @@ function requireAnyPermission(user, permissions) {
   if (!hasAnyPermission(user, permissions)) throw { status: 403, error: 'Permissao de acesso negada.' };
 }
 
+function requireCatalogReadPermission(user, resource) {
+  if (resource === 'users') return requirePermission(user, 'ACESSO:Visualizar');
+  if (hasPermission(user, RESOURCE_PERMISSIONS[resource] || 'GESTAO:Visualizar')) return;
+  if (['classes', 'activities', 'teachers'].includes(resource) && hasPermission(user, 'FREQUENCIA:Visualizar')) return;
+  throw { status: 403, error: 'Permissao de acesso negada.' };
+}
+
 function moduleForCatalog(resource) {
   return resource === 'users' ? 'ACESSO' : 'GESTAO';
 }
@@ -338,8 +345,7 @@ async function request(method, path, data = undefined) {
     if (!['units', 'locations', 'modalities', 'teachers', 'activities', 'classes', 'users'].includes(resource)) throw { status: 404, error: 'Recurso nao encontrado.' };
     const module = moduleForCatalog(resource);
     if (method === 'GET') {
-      if (resource === 'users') requirePermission(user, 'ACESSO:Visualizar');
-      else requirePermission(user, RESOURCE_PERMISSIONS[resource] || 'GESTAO:Visualizar');
+      requireCatalogReadPermission(user, resource);
       const rows = scopedCatalogRows(db, user, resource);
       return { rows, total: rows.length };
     }
