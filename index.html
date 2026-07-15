@@ -1,0 +1,47 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SISTEMA DE GERENCIAMENTO DE INSCRICOES - SGI / SEMED</title>
+  <style>
+    :root{font-family:Inter,Segoe UI,Arial,sans-serif;--ink:#081d42;--muted:#60708e;--line:#c8d8f2;--bg:#f3f7ff;--brand:#003c8f;--blue:#0047ab;--soft:#fff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink)}button,input,select{font:inherit}button{border:0;border-radius:8px;padding:10px 14px;font-weight:900;cursor:pointer}.primary{background:linear-gradient(135deg,var(--brand),var(--blue));color:#fff}.ghost{background:#eaf2ff;color:var(--ink)}.danger{background:#fee2e2;color:#991b1b}.login{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(rgba(0,31,91,.84),rgba(0,71,171,.78))}.login form{width:min(460px,100%);display:grid;gap:15px;background:#fff;padding:30px;border-radius:10px;box-shadow:0 24px 70px #001f5b55}.login-logo{width:min(310px,100%);justify-self:center;border:1px solid var(--line);border-radius:8px;padding:8px}h1{margin:0;font-size:30px}h2{margin:0 0 12px;color:var(--brand)}p{color:var(--muted)}label{display:grid;gap:7px;font-size:13px;font-weight:900;min-width:0}input,select{width:100%;min-width:0;min-height:42px;border:1px solid var(--line);border-radius:8px;padding:10px;background:#fff;color:var(--ink)}.shell{display:grid;grid-template-columns:280px 1fr;min-height:100vh}.side{background:linear-gradient(180deg,#001f5b,#003c8f);color:#fff;padding:18px;display:flex;flex-direction:column;gap:6px}.semed-logo{width:100%;background:#fff;border-radius:8px;padding:6px}.brand{font-weight:950;font-size:13px;text-transform:uppercase;margin:8px 0 16px}.side button{width:100%;text-align:left;background:transparent;color:#e8f1ff;border:1px solid transparent;text-transform:uppercase}.side button.active,.side button:hover{background:#ffffff22;border-color:#ffffff55}.side-footer{margin-top:auto;display:flex;flex-direction:column;align-items:center;gap:14px;width:100%}.logout-side{background:#eaf2ff!important;color:#081d42!important;text-align:center!important}.detic-logo{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}.detic-logo img{width:120px;max-width:70%;display:block;margin:0 auto}.detic-logo span{display:block;width:100%;font-size:10px;text-transform:uppercase;color:#d5e5ff;text-align:center}.top{height:64px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:2}.content{padding:24px;display:grid;gap:18px}.panel,.stat{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 10px 28px #003c8f14}.panel{padding:18px;overflow:hidden}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.stat{padding:18px;border-left:5px solid var(--blue)}.stat span{display:block;color:var(--muted);font-weight:900;text-transform:uppercase;font-size:12px}.stat strong{font-size:30px}.form{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:16px 18px;align-items:end}.form h2{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;margin-top:8px}.form h2:first-child{border:0;padding:0}.activity-grid,.permissions-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(240px,1fr));gap:16px 18px}.permissions-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:start;background:#f8fbff;border:1px solid var(--line);border-radius:12px;padding:14px}.permission-box{border:1px solid #dbe7fb;border-radius:10px;padding:14px;background:#fff;box-shadow:0 8px 22px #003c8f0d}.permission-box strong{display:block;margin-bottom:10px;color:var(--brand);font-size:13px;text-transform:uppercase}.permission-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}.permission-box label{display:flex!important;align-items:center;justify-content:flex-start;gap:8px;margin:0;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#f8fbff;color:var(--ink);font-size:12px;font-weight:850;line-height:1.3;white-space:normal;min-height:38px}.permission-box input[type=checkbox]{appearance:auto;width:16px!important;min-width:16px;max-width:16px;height:16px;min-height:16px;margin:0;padding:0;flex:0 0 16px}.permission-box span{overflow:visible;text-overflow:clip;white-space:normal;word-break:normal;overflow-wrap:anywhere}.actions{grid-column:1/-1;display:flex;justify-content:flex-end;gap:10px}.actions .primary{min-width:220px;min-height:48px}.toolbar,.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar input,.toolbar select{min-width:210px}.table{overflow:auto;border:1px solid var(--line);border-radius:10px}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:11px;border-bottom:1px solid var(--line);font-size:13px;text-align:left}th{background:#eaf2ff;color:var(--brand);text-transform:uppercase}.submenu{margin-left:10px;border-left:2px solid #fff8;padding-left:8px}.submenu button{font-size:11px;min-height:34px}.warn{color:#c2410c;font-weight:900}.toast{position:fixed;inset:0;display:grid;place-items:center;background:#001f5b33;z-index:9}.toast div{background:#fff;color:var(--brand);font-weight:950;padding:24px;border-radius:10px;box-shadow:0 20px 60px #001f5b44}@media(max-width:1100px){.form{grid-template-columns:repeat(2,minmax(180px,1fr))}.activity-grid{grid-template-columns:1fr 1fr}}@media(max-width:900px){.shell{grid-template-columns:1fr}.side{min-height:auto}.grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.grid,.form,.activity-grid{grid-template-columns:1fr}.permissions-grid{grid-template-columns:1fr}.content{padding:14px}.toolbar input,.toolbar select{min-width:100%}}
+  </style>
+  <style>
+    :root{--ink:#061a44;--muted:#50668d;--line:#bfd0ee;--bg:#f4f8ff;--brand:#002f87;--blue:#0047ab;--soft:#fff;--royal:#003399}
+    body{background:linear-gradient(180deg,#f7fbff 0,#eef5ff 100%)}
+    .side{background:linear-gradient(180deg,#001b55 0,#002f87 52%,#0047ab 100%)}
+    .primary{background:linear-gradient(135deg,#002f87,#0047ab)}
+    .panel,.stat{box-shadow:0 12px 30px #002f8714}
+    th{background:#e4efff;color:#002f87}
+    input:focus,select:focus{outline:2px solid #7da9ff;border-color:#0047ab}
+    .dashboard-table{min-width:620px}
+    .dashboard-table th:first-child,.dashboard-table td:first-child{min-width:260px;max-width:520px}
+    .activity-cell{white-space:normal;word-break:break-word;line-height:1.35}
+    .activity-link{display:inline;text-align:left;width:auto;padding:0;border-radius:0;background:transparent;color:#002f87;font-weight:950;text-decoration:underline;text-underline-offset:3px;white-space:normal;line-height:1.35}
+    .activity-link:hover{color:#0047ab;background:transparent}
+  </style>
+
+  <style>
+    @media (min-width:901px){.side{position:sticky;top:0;height:100vh;overflow-y:auto}.shell{align-items:start}}
+    @media (max-width:900px){.side{position:relative;height:auto;overflow:visible}}
+  </style>
+
+  <style>
+    .permissions-grid{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;padding:10px!important;background:#f8fbff!important}
+    .permission-box{display:grid!important;grid-template-columns:150px 1fr!important;align-items:start!important;gap:10px!important;padding:10px 12px!important;border-radius:8px!important;box-shadow:none!important}
+    .permission-box strong{margin:0!important;padding-top:7px!important;font-size:12px!important;line-height:1.2!important;white-space:normal!important}
+    .permission-items{display:flex!important;flex-wrap:wrap!important;gap:6px!important}
+    .permission-box label{display:flex!important;width:auto!important;min-width:0!important;min-height:30px!important;padding:6px 9px!important;border-radius:7px!important;line-height:1.15!important;background:#fff!important}
+    .permission-box span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;overflow-wrap:normal!important;word-break:normal!important}
+    .permission-box input[type=checkbox]{width:15px!important;min-width:15px!important;max-width:15px!important;height:15px!important;min-height:15px!important;flex-basis:15px!important}
+    @media(max-width:900px){.permission-box{grid-template-columns:1fr!important}.permission-box strong{padding-top:0!important}.permission-items{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important}}
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="./supabase-init.js?v=20260715-2"></script>
+  <script src="./app.js?v=20260715-2"></script>
+</body>
+</html>
+
